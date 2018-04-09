@@ -13,15 +13,15 @@ public class Neuron {
     int myIndex;
     double gradient;
 
-    static double eta = 0.15;    // [0.0..1.0] overall net traning rate
+    static double eta = 0.15;    // [0.0..1.0] overall net training rate
     static double alpha = 0.5;  // [0.0..n] multiplier of last weight change (momentum)
 
-    public Neuron(int numOutputs, int myIndex) {
+    public Neuron(int numOutputs, int index) {
         for (int c = 0; c < numOutputs; ++c)
         {
             outputWeights.add(new Connection(RandomWeight(),0f));
         }
-        myIndex = myIndex;
+        myIndex = index;
     }
 
     void SetOutputVal(double val) { outputVal = val; }

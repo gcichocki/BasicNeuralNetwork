@@ -9,16 +9,17 @@ import java.util.Random;
 public class Main {
 
     static boolean IS_TRAINING = true;
-    static int NUMBER_OF_TESTS = 3000;
+    static int NUMBER_OF_TESTS = 6000;
 
     public static void CreateTestFile() throws FileNotFoundException, UnsupportedEncodingException {
         PrintWriter writer = new PrintWriter("testXOR.txt", "UTF-8");
         for(int i=0;i<=NUMBER_OF_TESTS;i++){
             int a = new Random().nextInt(2);
             int b = new Random().nextInt(2);
-            int c = a ^ b;
-            writer.println(a+","+b);
-            writer.println(c);
+            int c = new Random().nextInt(2);
+            int d = a ^ b ^ c;
+            writer.println(a+","+b+","+c);
+            writer.println(d);
             /*if(c==0){
                 writer.println("1,1");
                 writer.println("0");
@@ -33,8 +34,8 @@ public class Main {
         int run = 0;
         //creation of the net
         List<Integer> topology = new ArrayList<>();
-        topology.add(2);
-        topology.add(2);
+        topology.add(3);
+        topology.add(3);
         topology.add(1);
         Net myNet = new Net(topology);
 
@@ -85,7 +86,7 @@ public class Main {
             resultVals.clear();
             run++;
         }
-        System.out.println("Sucess Ratio "+ success/total+"\n\n\n");
+        System.out.println("Success Ratio "+ success/total+"\n\n\n");
         //System.out.println(myNet.toString());
     }
 
